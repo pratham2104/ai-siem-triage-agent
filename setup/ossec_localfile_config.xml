@@ -1,0 +1,23 @@
+<!--
+  Added to /var/ossec/etc/ossec.conf to make Wazuh ingest Move More's
+  HTTP access log. Move More had no per-request logging by default —
+  morgan was added to the app (writing combined-format logs to
+  logs/access.log) before this config change was useful.
+
+  Insert inside the appropriate <ossec_config> block, alongside the
+  other <localfile> entries.
+-->
+
+<localfile>
+  <log_format>syslog</log_format>
+  <location>/home/ubuntu/move-more/logs/access.log</location>
+</localfile>
+
+<!--
+  Also enabled full archive logging (separate <global> block) so every
+  ingested line is retained for verification, not just lines that match
+  an alert rule:
+
+  <logall>yes</logall>
+  <logall_json>yes</logall_json>
+-->

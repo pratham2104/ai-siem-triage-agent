@@ -1,0 +1,25 @@
+<!--
+  Added to /var/ossec/etc/rules/local_rules.xml — a Move More-specific
+  SQLi detection rule for the access.log source.
+
+  In practice, Wazuh's built-in web attack ruleset (rule 31164,
+  'SQL injection attempt') already caught every payload the scanner
+  sent, so this custom rule ended up being a redundant belt-and-braces
+  layer rather than the primary detector. Kept here for reference and
+  because writing custom decoders/rules is a core Wazuh SOC skill worth
+  demonstrating independent of whether the built-in ruleset happened to
+  cover the same ground.
+-->
+
+<group name="local,movemore,web,attack,">
+
+  <rule id="100100" level="10">
+    <if_group>syslog</if_group>
+    <match>OR 1=1|UNION SELECT|DROP TABLE|' OR '|--%20|limit=1%27</match>
+    <description>Move More: Possible SQL Injection attempt detected in access log</description>
+    <mitre>
+      <id>T1190</id>
+    </mitre>
+  </rule>
+
+</group>

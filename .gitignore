@@ -1,0 +1,12 @@
+# Local run state — regenerated each run, not meant to be committed
+state.json
+model_comparison.jsonl
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Never commit real secrets
+.env
