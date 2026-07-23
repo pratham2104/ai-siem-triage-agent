@@ -15,7 +15,7 @@ Required only for live mode (--once / --daemon against a real Wazuh instance):
     WAZUH_INDEXER_PASS  the Wazuh indexer admin password
 
 Optional:
-    GEMINI_MODEL          default: "gemini-2.0-flash"
+    GEMINI_MODEL          default: "gemini-flash-lite-latest"
     MIN_ALERT_LEVEL       minimum Wazuh rule level to triage (default: 5)
     POLL_INTERVAL_SEC     seconds between polls in daemon mode (default: 30)
     BATCH_SIZE            max alerts to fetch per poll (default: 20)
@@ -28,7 +28,7 @@ WAZUH_INDEXER_USER = os.environ.get("WAZUH_INDEXER_USER", "admin")
 WAZUH_INDEXER_PASS = os.environ.get("WAZUH_INDEXER_PASS")
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-flash-lite-latest")
 
 MIN_ALERT_LEVEL = int(os.environ.get("MIN_ALERT_LEVEL", "5"))
 POLL_INTERVAL_SEC = int(os.environ.get("POLL_INTERVAL_SEC", "30"))
